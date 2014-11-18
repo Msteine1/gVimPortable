@@ -14,6 +14,22 @@
 ~MSle0~&^" \a
 
 # Command Line History (newest to oldest):
+:airline
+:Vopen
+:help vim-sensible
+:Helptags
+:echo("$HOME\bundle")
+:echo($HOME\bundle)
+:echo($HOME/bundle)
+:echo($HOME/bundle/)
+:echo($Home)
+:echo(~\.vim\bundle)
+:echo(~/.vim/bundle)
+:echo(~)
+:$VIMRUNTIME
+:version
+:~
+:help ft-pascal-syntax
 :set guifont?
 :fon
 :w
@@ -36,14 +52,17 @@
 	
 "2	LINE	0
 	let g:molokai_original = 1
-"-	CHAR	0
-	set colorscheme=molokai
+""-	CHAR	0
+	:
 
 # File marks:
-'0  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
-'1  30  25  ~\_vimrc
+'0  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
+'1  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+'2  30  25  ~\_vimrc
 
 # Jumplist (newest first):
+-'  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
+-'  1  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
 -'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
 -'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
 -'  30  25  ~\_vimrc
@@ -68,8 +87,82 @@
 -'  1  0  ~\_vimrc
 -'  30  25  ~\_vimrc
 -'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
 
 # History of marks within files (newest to oldest):
+
+> C:\Users\Präsentation\Downloads\setup-owncloud.php
+	"	129	0
 
 > C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\colortest.vim
 	"	56	38
