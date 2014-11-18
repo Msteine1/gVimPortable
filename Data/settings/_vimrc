@@ -30,3 +30,7 @@ endfunction
 
 colorscheme gruvbox
 set guifont=Consolas:h11
+runtime $HOME/bundle/pathogen.vim
+source $HOME/bundle/pathogen.vim
+execute pathogen#infect()
+
