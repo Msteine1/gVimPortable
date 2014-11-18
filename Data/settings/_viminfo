@@ -2,7 +2,7 @@
 # You may edit it if you're careful!
 
 # Value of 'encoding' when this file was written
-*encoding=latin1
+*encoding=utf-8
 
 
 # hlsearch on (H) or off (h):
@@ -14,10 +14,18 @@
 ~MSle0~&^" \a
 
 # Command Line History (newest to oldest):
+:Helptags
+:colorscheme kolor
+:help --remote-wait
+:q
+:help
+:set ruler
+:set airline
+:helptags
+:help airline
 :airline
 :Vopen
 :help vim-sensible
-:Helptags
 :echo("$HOME\bundle")
 :echo($HOME\bundle)
 :echo($HOME/bundle)
@@ -33,7 +41,6 @@
 :set guifont?
 :fon
 :w
-:q
 :set colorscheme molokai
 
 # Search String History (newest to oldest):
@@ -55,12 +62,21 @@
 ""-	CHAR	0
 	:
 
+# global variables:
+
 # File marks:
-'0  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
-'1  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
-'2  30  25  ~\_vimrc
+'0  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'1  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'2  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'3  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
+'4  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+'5  30  25  ~\_vimrc
 
 # Jumplist (newest first):
+-'  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 -'  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
 -'  1  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
 -'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
@@ -152,14 +168,16 @@
 -'  30  25  ~\_vimrc
 -'  1  0  ~\_vimrc
 -'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
+-'  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 
 # History of marks within files (newest to oldest):
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\help.txt
+	"	196	17
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+	"	149	8
 
 > C:\Users\Präsentation\Downloads\setup-owncloud.php
 	"	129	0
