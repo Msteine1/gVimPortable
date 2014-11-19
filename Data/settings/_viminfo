@@ -8,20 +8,29 @@
 # hlsearch on (H) or off (h):
 ~h
 # Last Search Pattern:
-~MSle0/^" \a
+~MSle0~/c-w
 
 # Last Substitute Search Pattern:
-~MSle0~&^" \a
+~MSle0&^" \a
+
+# Last Substitute String:
+$
 
 # Command Line History (newest to oldest):
+:helptags
 :Helptags
+:help easymotion
+:help easy
+:Gstatus
+:NERDTree
+:q
+:ls
+:E
 :colorscheme kolor
 :help --remote-wait
-:q
 :help
 :set ruler
 :set airline
-:helptags
 :help airline
 :airline
 :Vopen
@@ -44,6 +53,7 @@
 :set colorscheme molokai
 
 # Search String History (newest to oldest):
+?/c-w
 ? ^" \a
 ?/color
 
@@ -54,29 +64,47 @@
 # Input Line History (newest to oldest):
 
 # Registers:
+"0	CHAR	0
+	:
 "1	CHAR	0
 	set colorscheme=molokai
 	
 "2	LINE	0
 	let g:molokai_original = 1
 ""-	CHAR	0
-	:
+	>
 
 # global variables:
 
 # File marks:
-'0  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
-'1  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
-'2  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
-'3  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
-'4  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
-'5  30  25  ~\_vimrc
+'0  358  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\starting.txt
+'1  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\.git\index
+'2  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'3  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'4  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'5  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
+'6  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+'7  30  25  ~\_vimrc
 
 # Jumplist (newest first):
+-'  358  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\starting.txt
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\starting.txt
+-'  148  6  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  136  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  150  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  151  6  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 -'  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\.git\index
+-'  11  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
+-'  21  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\ZIM\Checklisten.txt
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\ZIM\allgemeine_Infos.txt
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\MarLog
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable
 -'  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 -'  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 -'  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
 -'  1  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
 -'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
@@ -122,62 +150,73 @@
 -'  30  25  ~\_vimrc
 -'  1  0  ~\_vimrc
 -'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
+-'  358  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\starting.txt
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\starting.txt
+-'  148  6  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  136  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  150  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  151  6  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 -'  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\.git\index
+-'  11  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
+-'  21  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\ZIM\Checklisten.txt
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\ZIM\allgemeine_Infos.txt
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\MarLog
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable
 -'  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+-'  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
+-'  1  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
 
 # History of marks within files (newest to oldest):
 
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+	"	146	6
+	^	151	7
+	.	151	0
+	+	149	7
+	+	151	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\starting.txt
+	"	358	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
+	"	11	0
+	.	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+	+	1	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\MarLog
+	"	1	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\ZIM\allgemeine_Infos.txt
+	"	1	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\ZIM\Checklisten.txt
+	"	11	0
+
 > C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\help.txt
 	"	196	17
-
-> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
-	"	149	8
 
 > C:\Users\Präsentation\Downloads\setup-owncloud.php
 	"	129	0
