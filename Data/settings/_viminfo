@@ -71,45 +71,31 @@ $
 # Registers:
 "0	CHAR	0
 	:
-""1	LINE	0
-	
-"2	LINE	0
-	
-"3	LINE	0
-	
-"4	LINE	0
-	# TADA
-"5	LINE	0
-	
-"6	LINE	0
-	* asdf
-"7	LINE	0
-	* Test
-"8	CHAR	0
+"1	CHAR	0
 	set colorscheme=molokai
 	
-"9	LINE	0
+"2	LINE	0
 	let g:molokai_original = 1
-"-	CHAR	0
+""-	CHAR	0
 	 
 
 # global variables:
 
 # File marks:
-'0  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-'1  30  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-'2  4  21  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
-'3  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.mkd
-'4  5  15  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\UsersMartin SteinertDocumentsLiberKeyDropbox\index.mkd
-'5  358  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\starting.txt
-'6  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\.git\index
-'7  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
-'8  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
-'9  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'0  6  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'1  4  21  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
+'2  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.mkd
+'3  5  15  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\UsersMartin SteinertDocumentsLiberKeyDropbox\index.mkd
+'4  358  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\starting.txt
+'5  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\.git\index
+'6  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'7  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'8  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
+'9  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
 
 # Jumplist (newest first):
+-'  6  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
 -'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
--'  30  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
 -'  4  21  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 -'  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 -'  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.mkd
@@ -203,17 +189,19 @@ $
 -'  30  25  ~\_vimrc
 -'  1  0  ~\_vimrc
 -'  30  25  ~\_vimrc
+-'  1  0  ~\_vimrc
+-'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
 
 # History of marks within files (newest to oldest):
 
 > C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-	"	1	0
-	.	30	0
-	+	30	0
+	"	6	0
+	^	6	0
+	.	6	0
+	+	2	0
 	+	1	1
-	+	30	0
-	+	1	0
-	+	30	0
+	+	6	0
 
 > C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 	"	4	21
