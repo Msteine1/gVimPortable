@@ -17,8 +17,8 @@
 $
 
 # Command Line History (newest to oldest):
-:helptags
 :Helptags
+:helptags
 :help easymotion
 :help easy
 :Gstatus
