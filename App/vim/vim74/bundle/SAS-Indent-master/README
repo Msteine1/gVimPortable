@@ -1,0 +1,60 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=4034
+
+Indent script for SAS. The algorithm is supposed to be rather tolerable.
+
+Examples of the indenting results are shown as following:
+
+1. For data section and procedure, proper indenting would be applied, with or without closing the section by run/quit statement.
+
+   data female;
+         set total; where gender = 0;
+   data male;
+         set total; where gender = 1;
+   run;
+   
+   data new;
+         set female male;
+   run;
+
+   proc sort data = new;
+         by gender;
+   proc freq data = new;
+         table gender / missing;
+   endsas;
+
+2. Even mixed with macro, the indenting is correct.
+
+   %macro temp();
+         data new;
+               where age >= 18;
+               format gender gender.;
+         proc freq data = new;
+               table gender / missing;
+   %mend; * Without closing by run statement;
+
+3. Logic expressions.
+
+   data a;
+         set b; where age >= 18;
+         if numtx = 1 and not (pid > 0 and dcitag in (1, 2)) then strata = 3;
+         else if pid > 0 then do;
+               if dcitag in (1, 2) then do; 
+                     strata = 1; dcitype = 1;
+               end;
+               else if dcipsh1 = 1 then do;
+                     strata = 1; dcitype = 3;
+               end;
+               else if numtx > 1 then strata = 2;
+         end;
+         else do;
+               if dcitag2 in (1, 2) then do; 
+                     strata = 1; dcitype = 2;
+               end;
+               else if dcipsh1 = 1 then do;
+                     strata = 1; dcitype = 3;
+               end;
+               else if pid < 0 and dcipsh1 ~= 1 and numtx > 1 then strata = 2;
+         end;
+   run;       
+
+PS: It should also work very well with my SAS syntax file: http://vim.sourceforge.net/scripts/script.php?script_id=3522
