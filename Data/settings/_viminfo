@@ -17,15 +17,36 @@
 $
 
 # Command Line History (newest to oldest):
-:w!
+:set lines=100
+:set lines=80
+:set lines=15
+:q
 :w
+:help yank
+:help 'paste'
+:Helptags
+:help surround
+:help :syn-match
+:echo($home)
+:e
+:set cc=2,4,6,8,10,14,18,22
+:set cc=3
+:set cc=+1,+3,+4,+5
+:set cc=+1+3+4+5
+:set cc=+1
+:set textwidth=40
+:cc +10
+:textwidth = 60
+:textwidth 60
+:help 'colorcolumn'
+:set colorcolumn= 80
+:set colorcolumn 80
+:w!
 :set number
 :number
-:Helptags
 :set relativenumber
 :set relativnumber
 :q!
-:q
 :Helptags
 :setf sas
 :vnew
@@ -78,49 +99,111 @@ $
 # Expression History (newest to oldest):
 
 # Input Line History (newest to oldest):
+@n
 @y
 
 # Input Line History (newest to oldest):
 
 # Registers:
-"0	CHAR	0
-	:
-"1	LINE	0
-	       */
+"0	LINE	0
+	Continous Integration Server
+""1	LINE	0
+	
 "2	LINE	0
-	      /*
+	Continous Integration Server
+	============================
+	Created Tuesday 03 May 2011
+	
+	Meeting zu Continous Integration Server (CIS)
+	Datum: 3.5.2011, 15.00 Uhr bis 15.30 Uhr
+	
+	Codetypen
+	---------
+	Test-Code (für Unittests)
+	Application-Code
+	
+	CIS
+	---
+	
+	* nutzt Maven (dort sind die Pfade zu den Libraries hinterlegt, ...)
+	* prüft auf Kompilierfehler
+	* prüft Codequalität 
+		* "Tote Ecken", die nie erreicht werden
+		* sind Kommentare hinterlegt
+	* gibt ein Report aus
+	
+	
+	[[CIS-Alternativen]]
+	----------------
+	- Bamboo (Atlassian): eine Einzellizenz kostet $800
+	- Hudson
+	
+	Diplomarbeit zu diesem Thema: [./2010-05-25_Diplomarbeit_Martin_Roedig.pdf](file:///C:/Users/Martin%20Steinert/Documents/LiberKey/Dropbox/00_PRIVAT/ZIM/allgemeine_Infos/Continous_Integration_Server/2010-05-25_Diplomarbeit_Martin_Roedig.pdf) 
 "3	LINE	0
-	        */
+	[[sdf]]
 "4	LINE	0
-	       /*
+	Created Tuesday 03 May 2011
+	
+	Meeting zu Continous Integration Server (CIS)
+	Datum: 3.5.2011, 15.00 Uhr bis 15.30 Uhr
+	
+	Codetypen
+	---------
+	Test-Code (für Unittests)
+	Application-Code
+	
+	CIS
+	---
+	
+	* nutzt Maven (dort sind die Pfade zu den Libraries hinterlegt, ...)
+	* prüft auf Kompilierfehler
+	* prüft Codequalität 
+		* "Tote Ecken", die nie erreicht werden
+		* sind Kommentare hinterlegt
+	* gibt ein Report aus
+	
+	
+	CIS-Alternativen
+	----------------
+	- Bamboo (Atlassian): eine Einzellizenz kostet $800
+	- Hudson
+	
+	Diplomarbeit zu diesem Thema: [./2010-05-25_Diplomarbeit_Martin_Roedig.pdf](file:///C:/Users/Martin%20Steinert/Documents/LiberKey/Dropbox/00_PRIVAT/ZIM/allgemeine_Infos/Continous_Integration_Server/2010-05-25_Diplomarbeit_Martin_Roedig.pdf) 
 "5	LINE	0
 	       */
 "6	LINE	0
 	      /*
 "7	LINE	0
-	      /*attrib value format = $200.;*/
+	        */
 "8	LINE	0
-	       */
+	       /*
 "9	LINE	0
-	      /*
-""-	CHAR	0
-	H
+	       */
+"-	CHAR	0
+	^
 
 # global variables:
 
 # File marks:
-'0  22  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
-'1  28  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
-'2  23  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
-'3  18  18  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
-'4  37  29  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
-'5  11  2  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
-'6  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
-'7  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
-'8  149  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
-'9  250  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+'0  2  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'1  3  237  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'2  22  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
+'3  28  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
+'4  23  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
+'5  18  18  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
+'6  37  29  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
+'7  11  2  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+'8  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
+'9  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
 
 # Jumplist (newest first):
+-'  2  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\Continous Integration Server.md
+-'  1  23  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+-'  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\CIS-Alternativen.md
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\diary\diary.md
+-'  5  3  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\diary\2014-11-20.md
 -'  22  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
 -'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
 -'  28  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
@@ -154,9 +237,6 @@ $
 -'  245  2  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
 -'  322  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
 -'  256  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
--'  29  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
--'  30  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
 -'  4  21  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 -'  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 -'  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.mkd
@@ -202,24 +282,61 @@ $
 -'  1  0  ~\_vimrc
 -'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
 -'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
+-'  2  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\Continous Integration Server.md
+-'  1  23  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+-'  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\CIS-Alternativen.md
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\diary\diary.md
+-'  5  3  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\diary\2014-11-20.md
+-'  22  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
+-'  28  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
+-'  24  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
+-'  23  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
 
 # History of marks within files (newest to oldest):
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+	"	2	0
+	^	2	1
+	.	2	0
+	+	3	0
+	+	1	1
+	+	3	0
+	+	1	0
+	+	3	0
+	+	1	0
+	+	3	0
+	+	3	19
+	+	1	0
+	+	3	0
+	+	1	32
+	+	2	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\CIS-Alternativen.md
+	"	1	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\Continous Integration Server.md
+	"	1	0
+	.	1	0
+	+	1	0
+	+	1	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\options.txt
+	"	5364	41
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\change.txt
+	"	1055	60
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\diary\2014-11-20.md
+	"	5	3
+	^	5	15
+	.	5	3
+	+	5	3
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\diary\diary.md
+	"	1	0
 
 > C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
 	"	22	0
@@ -291,15 +408,6 @@ $
 
 > C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas1.vim
 	"	21	3
-
-> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-	"	29	0
-	.	30	0
-	+	30	0
-	+	1	1
-	+	30	0
-	+	1	0
-	+	30	0
 
 > C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 	"	4	21

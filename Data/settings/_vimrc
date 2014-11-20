@@ -37,7 +37,9 @@ execute pathogen#infect()
 "Buffer am oberen Rand anzeigen
 "let g:airline#extensions#tabline#enabled = 1
 
-let g:vimwiki_list = [{"path": "../../../../LiberKey/Dropbox/00_PRIVAT/WIKI", "path_html": "../../../../LiberKey/Dropbox/00_PRIVAT/wiki_html_location", "syntax": 'markdown', "ext": '.md'}]
+let g:vimwiki_list = [{"path": "$Home/../../../WIKI", "path_html": "../../../../LiberKey/Dropbox/00_PRIVAT/wiki_html_location", "syntax": 'markdown', "ext": '.md'}]
 
 :set tabstop=2 shiftwidth=2 expandtab
 :set number
+
+:set history=1000
