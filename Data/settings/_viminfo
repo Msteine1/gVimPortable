@@ -17,6 +17,11 @@
 $
 
 # Command Line History (newest to oldest):
+:Helptags
+:setf sas
+:vnew
+:q!
+:q
 :w
 :echo($HOME)
 :echo('$HOME')
@@ -71,31 +76,108 @@ $
 # Registers:
 "0	CHAR	0
 	:
-"1	CHAR	0
-	set colorscheme=molokai
+""1	CHAR	0
+	data test;
+		input dirpath : $200.;
+	cards;
+	/rcak/dzall/CCDataHotel
+	/rcak/CCDataHotel/prod_akt/output/gsi/Berichte
+	/rcak/CCDataHotel/kons_akt/output/gsi/Berichte
+	/rcak/CCDataHotel/Cvar/prod/output/gsi/send
+	/rcak/CCDataHotel/Cvar/kons/output/gsi/send 
+	/rcak/CCDataHotel/Cvar/entw/output/gsi/send 
+	/rcak/CCDataHotel/Cvar/prod/input/gsi/receive 
+	/rcak/CCDataHotel/Cvar/kons/input/gsi/receive 
+	/rcak/CCDataHotel/Cvar/entw/input/gsi/receive
+	/rcak/RWA/input/sccp
+	/rcakuser/dzall 
+	;
+	run;
+"2	CHAR	0
+	data rights;
+	set test;
+	length _grantee _hlqgrantee _dirname _lagdirname $200 _dirpath $ 2000 _owner _right _hlqright $ 20 _userdir 3;
+	i=1;
+	Do while (scan(dirpath, i, " /") ^= "");
+		_lagdirname = _dirname;
+		_dirname = scan(dirpath, i, " /"); put _dirname=;
+		_dirpath = trim(_dirpath) !! "/" !! trim(_dirname); put _dirpath=;
+		Select;
+			When (i=1 and put (_dirname, $owner.) ^= '-') _owner = put (_dirname, $owner.);
+			When (_dirname =: "XN") do; _grantee = put (_dirname, $usergrp.); _userdir = 1; put "XN" _grantee= _userdir=; end;
+			When (_userdir^=1 and index ("&orgdirs.", trim(_dirname))) do; _grantee = symgetc(_dirname); put "ORGDIR" _grantee; end;
+			/* Wg. /rcak/CCDataHotel/Cvar/prod/input/gsi entfaellt _lagdirname = "interface" */
+			When (_userdir^=1 and lowcase(_dirname) = "output" /*and _lagdirname = "interface"*/) do; _right = "rx"; put "OUTPUT" _right; end;
+			When (_userdir^=1 and lowcase(_dirname) = "input" /*and _lagdirname = "interface"*/) do; _right = "rwx"; put "INPUT" _right; end;
+			otherwise;
+		End;
+		i+1;
+	End;
+	if _grantee ^= "" and _right = "" then _right = "rx";
+	* Rechte auf Basis des  High Level Namens;
+	If (put (scan(dirpath, 1, " /"), $hlqrght.) ^= '-') then do;
+		_hlqgrantee = scan(put (scan(dirpath, 1, " /"), $hlqrght.), 1);
+		_hlqright = scan(put (scan(dirpath, 1, " /"), $hlqrght.), 2);
+		put "hlq" _hlqgrantee= _hlqright=;
+	end;
+	* Verzeichnis-spezifische Rechte haben Vorrang vor Rechten auf Basis des HLQ;
+	if index (_grantee, _hlqgrantee) then do;
+		_hlqgrantee = '';
+		_hlqright = '';
+	end;
+	run;
+"3	LINE	0
 	
-"2	LINE	0
-	let g:molokai_original = 1
-""-	CHAR	0
+"4	LINE	0
+	
+"5	LINE	0
+	
+"6	LINE	0
+	# TADA
+"7	LINE	0
+	
+"8	LINE	0
+	* asdf
+"9	LINE	0
+	* Test
+"-	CHAR	0
 	 
 
 # global variables:
 
 # File marks:
-'0  6  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-'1  4  21  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
-'2  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.mkd
-'3  5  15  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\UsersMartin SteinertDocumentsLiberKeyDropbox\index.mkd
-'4  358  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\doc\starting.txt
-'5  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\.git\index
-'6  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
-'7  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
-'8  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
-'9  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
+'0  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
+'1  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
+'2  149  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+'3  250  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+'4  21  3  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas1.vim
+'5  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+'6  29  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'7  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'8  30  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'9  4  21  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 
 # Jumplist (newest first):
--'  6  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+-'  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
+-'  149  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  241  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  55  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  250  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  243  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  244  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  21  3  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas1.vim
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas1.vim
+-'  9  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas.vim
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas.vim
+-'  245  2  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  322  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  256  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  29  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
 -'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+-'  30  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
 -'  4  21  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 -'  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 -'  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.mkd
@@ -171,37 +253,50 @@ $
 -'  150  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 -'  151  6  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 -'  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\.git\index
--'  11  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
--'  21  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\NERD_tree_1
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\ZIM\Checklisten.txt
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\ZIM\allgemeine_Infos.txt
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\MarLog
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable
--'  135  14  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
--'  29  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
--'  129  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
--'  1  0  C:\Users\Präsentation\Downloads\setup-owncloud.php
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
+-'  149  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  241  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+-'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
 
 # History of marks within files (newest to oldest):
 
-> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-	"	6	0
-	^	6	0
-	.	6	0
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
+	"	3	0
+	^	3	0
+	.	3	0
 	+	2	0
+	+	3	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
+	"	1	0
+	.	2	0
+	+	2	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+	"	149	0
+	.	150	0
+	+	10	0
+	+	243	0
+	+	243	0
+	+	55	0
+	+	62	0
+	+	149	0
+	+	150	0
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas.vim
+	"	44	6
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas1.vim
+	"	21	3
+
+> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+	"	29	0
+	.	30	0
+	+	30	0
 	+	1	1
-	+	6	0
+	+	30	0
+	+	1	0
+	+	30	0
 
 > C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
 	"	4	21
