@@ -146,20 +146,18 @@ $
 # global variables:
 
 # File marks:
-'0  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
-'1  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
-'2  149  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
-'3  250  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
-'4  21  3  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas1.vim
-'5  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
-'6  29  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-'7  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-'8  30  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-'9  4  21  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
+'0  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
+'1  149  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+'2  250  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+'3  21  3  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\App\vim\vim74\syntax\sas1.vim
+'4  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
+'5  29  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'6  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'7  30  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'8  4  21  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.md
+'9  1  0  C:\Users\Martin Steinert\Documents\00_PRIVAT\WIKI\index.mkd
 
 # Jumplist (newest first):
--'  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
 -'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
 -'  149  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
 -'  241  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
@@ -253,19 +251,8 @@ $
 -'  150  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 -'  151  6  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
 -'  149  8  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\help.html
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
--'  149  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
--'  241  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
 
 # History of marks within files (newest to oldest):
-
-> C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
-	"	3	0
-	^	3	0
-	.	3	0
-	+	2	0
-	+	3	0
 
 > C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
 	"	1	0
