@@ -14,18 +14,23 @@ function MyDiff()
   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
   let arg3 = v:fname_out
   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+if $VIMRUNTIME =~ ' '
+   if &sh =~ '\<cmd'
+     if empty(&shellxquote)
+       let l:shxq_sav = ''
+       set shellxquote&
+     endif
+     let cmd = '"' . $VIMRUNTIME . '\diff"'
+   else
+     let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+   endif
+ else
+   let cmd = $VIMRUNTIME . '\diff'
+ endif
+ silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+ if exists('l:shxq_sav')
+   let &shellxquote=l:shxq_sav
+ endif
 endfunction
 
 colorscheme gruvbox
@@ -39,7 +44,10 @@ execute pathogen#infect()
 
 let g:vimwiki_list = [{"path": "$Home/../../../WIKI", "path_html": "../../../../LiberKey/Dropbox/00_PRIVAT/wiki_html_location", "syntax": 'markdown', "ext": '.md'}]
 
-:set tabstop=2 shiftwidth=2 expandtab
-:set number
+set tabstop=2 shiftwidth=2 expandtab
+set number
 
-:set history=1000
+set history=1000
+
+set diffopt=icase
+set diffopt=iwhite

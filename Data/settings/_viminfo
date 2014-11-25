@@ -17,10 +17,19 @@
 $
 
 # Command Line History (newest to oldest):
+:q!
+:q
+:diffthis
+:vnew
+:set diffexpr=""
+:set diffopt=iwhite
+:set diffopt+=icase
+:set diffopt=icase
+:echo $home
+:echo $vim
 :set lines=100
 :set lines=80
 :set lines=15
-:q
 :w
 :help yank
 :help 'paste'
@@ -46,7 +55,6 @@ $
 :number
 :set relativenumber
 :set relativnumber
-:q!
 :Helptags
 :setf sas
 :vnew
@@ -185,18 +193,27 @@ $
 # global variables:
 
 # File marks:
-'0  2  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-'1  3  237  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
-'2  22  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
-'3  28  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
-'4  23  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
-'5  18  18  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
-'6  37  29  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
-'7  11  2  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Konzepte\Filesysteme_Verzeichnisstrukturen\ACL-Generierung_v3_20130927.sas
-'8  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\prototyp-macros\addiere.sas
-'9  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\rcaabtoo-macros\addiere.sas
+'0  1  0  ~\_vimrc
+'1  30  1  C:\Users\Präsentation\Desktop\dss.txt
+'2  29  8  C:\Users\Präsentation\Desktop\dssie.txt
+'3  1  0  C:\Users\Präsentation\Desktop\dss.txt
+'4  28  0  C:\Users\Präsentation\Desktop\dssie.txt
+'5  18  0  C:\Users\Präsentation\Desktop\dss.txt
+'6  2  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'7  3  237  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
+'8  22  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
+'9  28  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
 
 # Jumplist (newest first):
+-'  1  0  ~\_vimrc
+-'  29  0  ~\_vimrc
+-'  11  0  C:\Users\Präsentation\Desktop\dssie.txt
+-'  28  1  C:\Users\Präsentation\Desktop\dssie.txt
+-'  30  1  C:\Users\Präsentation\Desktop\dss.txt
+-'  29  8  C:\Users\Präsentation\Desktop\dssie.txt
+-'  1  0  C:\Users\Präsentation\Desktop\dssie.txt
+-'  1  0  C:\Users\Präsentation\Desktop\dss.txt
+-'  18  0  C:\Users\Präsentation\Desktop\dss.txt
 -'  2  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
 -'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\Continous Integration Server.md
 -'  1  23  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
@@ -265,37 +282,34 @@ $
 -'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
 -'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
 -'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
 -'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
 -'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
 -'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
 -'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  30  25  ~\_vimrc
--'  1  0  ~\_vimrc
--'  187  68  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  195  11  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\gVimPortable\option-window
--'  2  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\Continous Integration Server.md
--'  1  23  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
--'  3  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\CIS-Alternativen.md
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\diary\diary.md
--'  5  3  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\diary\2014-11-20.md
--'  22  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
--'  1  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-11-14 Backtesting\macros\codp-macros\basel_2_sektoren.sas
--'  28  1  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
--'  24  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
--'  23  0  C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\01_ARBEIT\Projekte\DZ Bank\2012-09-10 SAS-Infrastruktur\Testfälle\Migration-Metadaten-Skripten\SASMain\autoexec.sas
 
 # History of marks within files (newest to oldest):
+
+> C:\Users\Präsentation\Desktop\dss.txt
+	"	11	0
+	.	4	0
+	+	4	0
+
+> C:\Users\Präsentation\Desktop\dssie.txt
+	"	10	0
+	^	11	0
+	.	10	0
+	+	22	0
+	+	1	0
+	+	10	0
+
+> ~\_vimrc
+	"	1	0
+	.	17	0
+	+	30	0
+	+	17	0
+
+> C:\Users\Präsentation\Desktop\dss - Kopie.txt
+	"	8	0
 
 > C:\Users\Martin Steinert\Documents\LiberKey\Dropbox\00_PRIVAT\WIKI\index.md
 	"	2	0
@@ -477,8 +491,3 @@ $
 	+	195	11
 	+	196	33
 	+	195	22
-
-> ~\_vimrc
-	"	29	0
-	.	30	0
-	+	30	0
