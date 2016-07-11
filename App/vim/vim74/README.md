@@ -1,82 +1,135 @@
-gruvbox
-=======
+A Personal Wiki For Vim
+==============================================================================
 
-Retro groove color scheme for Vim.
+![screenshot1](doc/screenshot_1.png)
+![screenshot2](doc/screenshot_2.png)
 
-Gruvbox is heavily inspired by [badwolf][], [jellybeans][] and [solarized][].
+Intro
+------------------------------------------------------------------------------
 
-Designed as a bright theme with pastel 'retro groove' colors and light/dark mode switching in the way of [solarized][]. The main focus when developing Gruvbox is to keep colors easily distinguishable, contrast enough and still pleasant for the eyes.
+Vimwiki is a personal wiki for Vim -- a number of linked text files that have
+their own syntax highlighting.
 
-   [badwolf]: https://github.com/sjl/badwolf
-   [jellybeans]: https://github.com/nanotech/jellybeans.vim
-   [solarized]: http://ethanschoonover.com/solarized
+With Vimwiki you can:
 
-Screenshots
------------
+ * organize notes and ideas
+ * manage todo-lists
+ * write documentation
+ * maintain a diary
+ * export everything to HTML
 
-Refer [Gallery][] for more syntax-specific screenshots.
+To do a quick start press `<Leader>ww` (this is usually `\ww`) to go to your index
+wiki file.  By default it is located in `~/vimwiki/index.wiki`.
 
-   [Gallery]: https://github.com/morhetz/gruvbox/wiki/Gallery
+Feed it with the following example:
 
-### Dark mode
+    = My knowledge base =
+        * Tasks -- things to be done _yesterday_!!!
+        * Project Gutenberg -- good books are power.
+        * Scratchpad -- various temporary stuff.
 
-![Screenshot](http://i.imgur.com/2870c.png)
+Place your cursor on `Tasks` and press Enter to create a link.  Once pressed,
+`Tasks` will become `[[Tasks]]` -- a Vimwiki link.  Press Enter again to
+open it.  Edit the file, save it, and then press Backspace to jump back to your
+index.
 
-### Light mode
+A Vimwiki link can be constructed from more than one word.  Just visually
+select the words to be linked and press Enter.  Try it with `Project Gutenberg`.
+The result should look something like:
 
-![Screenshot](http://i.imgur.com/oS9I3.png)
+    = My knowledge base =
+        * [[Tasks]] -- things to be done _yesterday_!!!
+        * [[Project Gutenberg]] -- good books are power.
+        * Scratchpad -- various temporary stuff.
 
-Documentation
--------------
 
-Please check [wiki][] for installation details, terminal-specific setup, troubleshooting, configuration options and others.
+Basic Markup
+------------------------------------------------------------------------------
 
-   [wiki]: https://github.com/morhetz/gruvbox/wiki
+    = Header1 =
+    == Header2 ==
+    === Header3 ===
 
-Features
---------
 
-* Lots of style-customization options (contrast, color invertion, italics usage etc.)
-* Extended filetype highlighting: Html, Xml, Vim, Clojure, C, Python, JavaScript, CoffeeScript, Ruby, Objective-C, Go, Lua, MoonScript, Java
-* Supported plugins: [EasyMotion][], [vim-sneak][], [Indent Guides][], [indentLine][], [Rainbow Parentheses][], [Airline][], [GitGutter][], [Signify][], [ShowMarks][], [Signature][], [Syntastic][], [CtrlP][], [Startify][]
+    *bold* -- bold text
+    _italic_ -- italic text
 
-   [EasyMotion]: https://github.com/Lokaltog/vim-easymotion
-   [vim-sneak]: https://github.com/justinmk/vim-sneak
-   [Indent Guides]: https://github.com/nathanaelkane/vim-indent-guides
-   [indentLine]: https://github.com/Yggdroot/indentLine
-   [Rainbow Parentheses]: https://github.com/kien/rainbow_parentheses.vim
-   [Airline]: https://github.com/bling/vim-airline
-   [GitGutter]: https://github.com/airblade/vim-gitgutter
-   [Signify]: https://github.com/mhinz/vim-signify
-   [ShowMarks]: http://www.vim.org/scripts/script.php?script_id=152
-   [Signature]: https://github.com/kshenoy/vim-signature
-   [Syntastic]: https://github.com/scrooloose/syntastic
-   [CtrlP]: https://github.com/kien/ctrlp.vim
-   [Startify]: https://github.com/mhinz/vim-startify
+    [[wiki link]] -- wiki link
+    [[wiki link|description]] -- wiki link with description
 
-Contributions
--------------
 
-See [gruvbox-generalized][] repo for contributions, ports and extras.
+Lists:
 
-[gruvbox-generalized]: https://github.com/morhetz/gruvbox-generalized
+    * bullet list item 1
+        - bullet list item 2
+        - bullet list item 3
+            * bullet list item 4
+            * bullet list item 5
+    * bullet list item 6
+    * bullet list item 7
+        - bullet list item 8
+        - bullet list item 9
 
-ToDo
-----
+    1. numbered list item 1
+    2. numbered list item 2
+        a) numbered list item 3
+        b) numbered list item 4
 
-* Filetype syntax highlighting (R, TeX, Swift, Haskell and I'm still dissatisfied with CSS)
-* Plugin support (MiniBufExplorer, Tagbar, Netrw, VimPLug)
-* Lightline theme
 
-Self-Promotion
---------------
+For other syntax elements, see `:h vimwiki-syntax`
 
-If you like gruvbox follow the repository on
-[GitHub](https://github.com/morhetz/gruvbox) and vote for it on
-[vim.org](http://www.vim.org/scripts/script.php?script_id=4349).
 
-License
--------
-[MIT/X11][]
+Key bindings
+------------------------------------------------------------------------------
 
-   [MIT/X11]: https://en.wikipedia.org/wiki/MIT_License
+normal mode:
+
+ * `<Leader>ww` -- Open default wiki index file.
+ * `<Leader>wt` -- Open default wiki index file in a new tab.
+ * `<Leader>ws` -- Select and open wiki index file.
+ * `<Leader>wd` -- Delete wiki file you are in.
+ * `<Leader>wr` -- Rename wiki file you are in.
+ * `<Enter>` -- Follow/Create wiki link
+ * `<Shift-Enter>` -- Split and follow/create wiki link
+ * `<Ctrl-Enter>` -- Vertical split and follow/create wiki link
+ * `<Backspace>` -- Go back to parent(previous) wiki link
+ * `<Tab>` -- Find next wiki link
+ * `<Shift-Tab>` -- Find previous wiki link
+
+For more keys, see `:h vimwiki-mappings`
+
+
+Commands
+------------------------------------------------------------------------------
+
+ * `:Vimwiki2HTML` -- Convert current wiki link to HTML
+ * `:VimwikiAll2HTML` -- Convert all your wiki links to HTML
+ * `:help vimwiki-commands` -- list all commands
+
+
+Installation
+==============================================================================
+
+Prerequisites
+------------------------------------------------------------------------------
+
+Make sure you have these settings in your vimrc file:
+
+    set nocompatible
+    filetype plugin on
+    syntax on
+
+Without them Vimwiki will not work properly.
+
+
+Installation using [Pathogen](http://www.vim.org/scripts/script.php?script_id=2332)
+------------------------------------------------------------------------------
+
+    cd ~/.vim
+    mkdir bundle
+    cd bundle
+    git clone https://github.com/vimwiki/vimwiki.git
+
+Or download the [zip archive](https://github.com/vimwiki/vimwiki/archive/master.zip) and extract it in `~/.vim/bundle/`
+
+Then launch Vim, run `:Helptags` and then `:help vimwiki` to verify it was installed.
