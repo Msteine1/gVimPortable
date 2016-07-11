@@ -3,6 +3,9 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+" <LEADER> von \ auf , aendern
+let mapleader = ","
+
 set diffexpr=MyDiff()
 function MyDiff()
   let opt = '-a --binary '
@@ -14,25 +17,171 @@ function MyDiff()
   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
   let arg3 = v:fname_out
   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+if $VIMRUNTIME =~ ' '
+   if &sh =~ '\<cmd'
+     if empty(&shellxquote)
+       let l:shxq_sav = ''
+       set shellxquote&
+     endif
+     let cmd = '"' . $VIMRUNTIME . '\diff"'
+   else
+     let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+   endif
+ else
+   let cmd = $VIMRUNTIME . '\diff'
+ endif
+ silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+ if exists('l:shxq_sav')
+   let &shellxquote=l:shxq_sav
+ endif
 endfunction
 
 colorscheme gruvbox
-set guifont=Consolas:h11
-"runtime $HOME/bundle/pathogen.vim
-"source $HOME/bundle/pathogen.vim
+
+"Buffer mit gn und gp wechseln
+nmap gn :bn<cr>
+nmap gp :bp<cr>
+
+"Pathogen Plugin Manager aktivieren
 execute pathogen#infect()
 
+" AIRLINE
+" enable paste detection 
+let g:airline_detect_paste=1
+
+" here is an example of how you could replace the branch indicator with
+" the current working directory, followed by the filename.
+let g:airline_section_b = '%{getcwd()}'
+let g:airline_section_c = '%t %s'
+let g:airline_section_warning = ''
+let g:airline#extensions#tabline#buffer_idx_mode = 1  
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+
+
+" VIMWIKI DeutscheBank Logo und Footer einfügen
+" :iabbrev @@e {{https://www.deutsche-bank.de/de/img/logo.gif}} <esc>0o<esc>0o[[http://gd.intranet.db.com/iam/martin.steinert@db.com \| Martin Steinert]]<br> <esc>0o<esc>0oExternal consultant of Kybeidos GmbH<br> <esc>0ofor<br> <esc>0oDeutsche Bank AG<br> <esc>0oGTO PBC IT<br> <esc>0oCentral Park, Adolph-Prior-Straße 11, 65936 Frankfurt am Main, Germany<br> <esc>0oTel. +49(699)1065902<br> <esc>0oMobile +49(174)3298410<br> <esc>0oEmail martin.steinert@db.com<br> <esc>0o<esc>0o{{https://www.db.com/en/img/claim_en.gif}}
+" :iabbrev @@a {{../../../logotype_small_lefthanded.jpg\|LOGO\|width:15px;}}
+ 
+" relative Zeilennummerierung einschalten
+set rnu
+" Wenn Fokus nicht auf VIM, dann wieder absolute Zeilennummerierung
+:au FocusLost * :set norelativenumber number
+:au FocusGained * :set relativenumber
+" Wenn im Insert Mode absolute Zeilennummerierung anzeigen
+autocmd InsertEnter * :set norelativenumber number
+autocmd InsertLeave * :set relativenumber
+  
+
+
+"Buffer am oberen Rand anzeigen
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s: '
+
+" let g:airline#extensions#tabline#show_tabs = 1
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline_section_y ='BN: %{bufnr("%")}'
+" let g:airline_inactive_collapse=1
+" let g:airline#extensions#tabline#show_tab_nr = 1
+" let g:airline_section_b = '%{getcwd()}'
+" let g:airline_section_c = '%t'
+" enable/disable displaying index of the buffer.
+
+" VIMWIKI EINSTELLUNGEN
+let g:vimwiki_list = [{"path": "Z:/Shared_Files/owncloud/data/martin/files/VIM-WIKI", "path_html": "Z:/Shared_Files/owncloud/data/martin/files/VIM-WIKI/HTML"}] 
+let g:vimwiki_html_header_numbering=2       "Überschriften Nummerierung in HTML 0-2
+let g:vimwiki_table_auto_fmt=1              "Automatische Formatierung für Tabellen
+let g:vimwiki_camel_case=0                  "CamelCase an/aus schalten
+
+set diffopt=icase
+set diffopt=iwhite
+
+" Remapping jj to <ESC>
+:imap jj <ESC> 
+
+
+" Remapping der Umlaute fuer den Host"
+":map! ß á
+":map! ö ”
+":map! ä „
+":map! ü 
+":map! Ü š
+":map! Ö ™
+":map! Ä Ž
+
+":map! ß ss
+":map! ö oe
+":map! ä ae
+":map! ü ue
+":map! Ü UE
+":map! Ö OE
+":map! Ä AE
+
+" Open markdown files with Chrome.
+autocmd BufEnter *.mkd exe 'noremap <F5> :!start C:\Users\ys2130\LiberKey\Apps\Chrome\ChromeLKL.exe %:p<CR>'
+autocmd BufEnter *.md exe 'noremap <F5> :!start C:\Users\ys2130\LiberKey\Apps\Chrome\ChromeLKL.exe %:p<CR>'
+autocmd BufEnter *.markdown exe 'noremap <F5> :!start C:\Users\ys2130\LiberKey\Apps\Chrome\ChromeLKL.exe %:p<CR>'
+
+" automatische Syntaxerkennung einschalten.
+syntax on
+filetype plugin indent on
+filetype plugin on          " plugins are enabled
+
+set hidden
+set nowrap        " don't wrap lines
+set expandtab     " no TAB character
+set tabstop=2     " a tab is four spaces
+set backspace=indent,eol,start
+                  " allow backspacing over everything in insert mode
+set autoindent    " always set autoindenting on
+set copyindent    " copy the previous indentation on autoindenting
+set number        " always show line numbers
+set shiftwidth=2  " number of spaces to use for autoindenting
+set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+set showmatch     " set show matching parenthesis
+set ignorecase    " ignore case when searching
+set smartcase     " ignore case if search pattern is all lowercase,
+                  "    case-sensitive otherwise
+set smarttab      " insert tabs on the start of a line according to
+                  "    shiftwidth, not tabstop
+set hlsearch      " highlight search terms
+set incsearch     " show search matches as you type
+set guifont=Consolas:h12	" Schriftart auf Consolas setzen
+
+" FTP Mode auf ASCII setzen
+let g:netrw_ftpmode="ascii"
+let g:netrw_use_nt_rcp=1 "use WinNT/2K/XP's rcp, binary mode
+
+" Sets how many lines of history VIM has to remember
+set history=1000
+
+"Set to auto read when a file is changed from the outside
+set autoread
+
+" Statusleiste dauerhaft anzeigen
+set statusline=2 
+
+" NErdtree zeigt Lesezeichen beim oeffnen an
+let NERDTreeShowBookmarks=1
+
+" Dateien ohne Endung als SAS Dateien interpretieren 
+" autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set syntax=sas | endif
+
+" keep the width of the window
+set wfw
+
+" Backup Files (die mit der ~) nicht mehr in das Arbeitsverzeichnis schreiben,
+" sondern in ein eigenes Verzeichnis
+set backupdir=~/vimtmp,.
+" set directory=~/vimtmp,.
 

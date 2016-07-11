@@ -1,278 +1,242 @@
 " Vim syntax file
-" Language:	SAS
-" Maintainer:	James Kidd <james.kidd@covance.com>
-" Last Change:  2012 Apr 20
-"               Corrected bug causing some keywords to appear as strings instead
-"               18 Jul 2008 by Paulo Tanimoto <ptanimoto@gmail.com>
-"               Fixed comments with * taking multiple lines.
-"               Fixed highlighting of macro keywords.
-"               Added words to cases that didn't fit anywhere.
-"             	02 Jun 2003
-"		Added highlighting for additional keywords and such;
-"		Attempted to match SAS default syntax colors;
-"		Changed syncing so it doesn't lose colors on large blocks;
-"		Much thanks to Bob Heckel for knowledgeable tweaking.
-"  For version 5.x: Clear all syntax items
-"  For version 6.x: Quit when a syntax file was already loaded
+" Language: SAS
+" Maintainer: Zhenhuan Hu <wildkeny@gmail.com>
+" Version: 1.2.5
+" Last Change:
+"
+"    30 Mar 2015 by Zhenhuan Hu
+"
+"    Additional keywords
+"
+"    19 Jun 2014 by Zhenhuan Hu
+"
+"    Improved macro comment syntax
+"
+"    24 Jul 2013 by Zhenhuan Hu
+"
+"    Minor cosmetic modifications for hash objects
+"    Minor bug fixes for statment syntax
+"
+"    28 Mar 2012 by Zhenhuan Hu
+"    
+"    Added syntax for macro comment
+"
+"    27 Feb 2012 by Zhenhuan Hu 
+"
+"    Completely rewrote approach for highlighting SAS statements 
+"    Updated new statements in Base SAS 9.3 and SAS/Stat
+"    Fixed glitches in highlighting procedure names and internal variables.
+"    Simplify the approach for highlighting SAS functions
+"    Added highlighting for hash and hiter objects
+"
+"    1 Apr 2011 by Zhenhuan Hu
+"
+"    Fixed mis-recognization of keywords and function names
+"    Fixed syntax issues when multiple comment statements being put in the same line
+"    More efficient approaches for highlighting statements, procs, and macros
+"    Added highlighting for new statements and functions introduced in SAS 9.1/9.2
+"    Added highlighting for user defined macro functions, ods statements and formats
+"
+"    18 Jul 2008 by Paulo Tanimoto <ptanimoto@gmail.com>
+"
+"    Fixed comments with * taking multiple lines
+"    Fixed highlighting of macro keywords
+"    Added words to cases that didn't fit anywhere
+"
+"    02 Jun 2003 by Bob Heckel
+"
+"    Added highlighting for additional keywords and such
+"    Attempted to match SAS default syntax colors
+"    Changed syncing so it doesn't lose colors on large blocks
+"
+"    26 Sep 2001 by James Kidd
+"
+"    Added keywords for use in SAS SQL procedure and highlighting for
+"    SAS base procedures, added logic to distinqush between versions
+"    for SAS macro variable highlighting (Thanks to user Ronald
+"    Höllwarth for pointing out bug)
+"
+"    For SAS 5: Clear all syntax items
+"    For SAS 6: Quit when a syntax file was already loaded
+
 if version < 600
-   syntax clear
+  syntax clear
 elseif exists("b:current_syntax")
-   finish
+  finish
 endif
 
+" SAS is case insensitive
 syn case ignore
 
-syn region sasString	start=+"+  skip=+\\\\\|\\"+  end=+"+
-syn region sasString	start=+'+  skip=+\\\\\|\\"+  end=+'+
+syn region sasString start=+"+ skip=+\\\\\|\\"+ end=+"+
+syn region sasString start=+'+ skip=+\\\\\|\\"+ end=+'+
 
-" Want region from 'cards;' to ';' to be captured (Bob Heckel)
-syn region sasCards	start="^\s*CARDS.*" end="^\s*;\s*$"
-syn region sasCards	start="^\s*DATALINES.*" end="^\s*;\s*$"
+" Want region from 'CARDS' to ';' to be captured (Bob Heckel)
+syn region sasCards start="\(^\|;\)\s*\(CARDS\|DATALINES\)\>"hs=s+1 end=";" 
 
-syn match sasNumber	"-\=\<\d*\.\=[0-9_]\>"
+syn match sasNumber "-\=\<\d*\.\=[0-9_]\>"
 
 " Block comment
-syn region sasComment	start="/\*"  end="\*/" contains=sasTodo
-
-" Ignore misleading //JCL SYNTAX... (Bob Heckel)
-syn region sasComment	start="[^/][^/]/\*"  end="\*/" contains=sasTodo
-
+syn region sasComment start="/\*" end="\*/" contains=sasTodo
 " Previous code for comments was written by Bob Heckel
-" Comments with * may take multiple lines (Paulo Tanimoto)
-syn region sasComment start=";\s*\*"hs=s+1 end=";" contains=sasTodo
-
+" Several comments can be put in the same line (Zhenhuan Hu)
+syn region sasComment start="^\s*\*" skip=";\s*\*" end=";"me=e-1 contains=sasTodo
 " Comments with * starting after a semicolon (Paulo Tanimoto)
-syn region sasComment start="^\s*\*" end=";" contains=sasTodo
-
-" This line defines macro variables in code.  HiLink at end of file
-" defines the color scheme. Begin region with ampersand and end with
-" any non-word character offset by -1; put ampersand in the skip list
-" just in case it is used to concatenate macro variable values.
-
-" Thanks to ronald höllwarth for this fix to an intra-versioning
-" problem with this little feature
-
-if version < 600
-   syn region sasMacroVar	start="\&" skip="[_&]" end="\W"he=e-1
-else		 " for the older Vim's just do it their way ...
-   syn region sasMacroVar	start="&" skip="[_&]" end="\W"he=e-1
-endif
-
-
-" I dont think specific PROCs need to be listed if use this line (Bob Heckel).
-syn match sasProc		"^\s*PROC \w\+"
-syn keyword sasStep		RUN QUIT DATA
-
+syn region sasComment start=";\s*\*"ms=s+1 end=";"me=e-1 contains=sasTodo
+" Macro comments (Zhenhuan Hu)
+syn region sasComment start="^\s*%\*" skip=";\s*%\*" end=";"me=e-1 contains=sasTodo
+" Macro comments with * starting after a semicolon (Zhenhuan Hu)
+syn region sasComment start=";\s*%\*"ms=s+1 end=";"me=e-1 contains=sasTodo
+" Self-defined section mark
+syn region sasSection start="/\* SECTION" end="\*/" contains=sasTodo
 
 " Base SAS Procs - version 8.1
+syn keyword sasStep RUN DATA
+syn keyword sasCondition DO ELSE END IF THEN TO OVER UNTIL WHILE 
+syn keyword sasOperator AND OR IN NOT EQ NE GT LT GE LE
 
-syn keyword sasConditional	DO ELSE END IF THEN UNTIL WHILE
+syn match sasStatementKwd "[^;]" contained
 
-syn keyword sasStatement	ABORT ARRAY ATTRIB BY CALL CARDS CARDS4 CATNAME
-syn keyword sasStatement	CONTINUE DATALINES DATALINES4 DELETE DISPLAY
-syn keyword sasStatement	DM DROP ENDSAS ERROR FILE FILENAME FOOTNOTE
-syn keyword sasStatement	FORMAT GOTO INFILE INFORMAT INPUT KEEP
-syn keyword sasStatement	LABEL LEAVE LENGTH LIBNAME LINK LIST LOSTCARD
-syn keyword sasStatement	MERGE MISSING MODIFY OPTIONS OUTPUT PAGE
-syn keyword sasStatement	PUT REDIRECT REMOVE RENAME REPLACE RETAIN
-syn keyword sasStatement	RETURN SELECT SET SKIP STARTSAS STOP TITLE
-syn keyword sasStatement	UPDATE WAITSAS WHERE WINDOW X SYSTASK
+" Data step statments, 9.4 (Zhenhuan Hu)
+syn match sasStatement "\(^\|;\)\s*\(ABORT\|ARRAY\|ATTRIB\|BY\|CARDS\|CARDS4\|CATNAME\)\>" contains=sasStatementKwd
+syn match sasStatement "\(^\|;\)\s*\(CONTINUE\|DATALINES\|DATALINES4\|DELETE\|DESCRIBE\|DISPLAY\|DM\)\>" contains=sasStatementKwd
+syn match sasStatement "\(^\|;\)\s*\(DROP\|ENDSAS\|ERROR\|EXECUTE\|FILE\|FILENAME\|FOOTNOTE\d\=\|FORMAT\)\>" contains=sasStatementKwd
+syn match sasStatement "\(^\|;\)\s*\(GOTO\|INFILE\|INFORMAT\|INPUT\|KEEP\|LABEL\|LEAVE\|LENGTH\|LIBNAME\)\>" contains=sasStatementKwd
+syn match sasStatement "\(^\|;\)\s*\(LINK\|LIST\|LOCK\|LOSTCARD\|MERGE\|MISSING\|MODIFY\|OPTIONS\|OTHERWISE\|OUTPUT\)\>" contains=sasStatementKwd
+syn match sasStatement "\(^\|;\)\s*\(PAGE\|PUT\|PUTLOG\|REDIRECT\|REMOVE\|RENAME\|REPLACE\|RESETLINE\)\>" contains=sasStatementKwd
+syn match sasStatement "\(^\|;\)\s*\(RETAIN\|RETURN\|SASFILE\|SELECT\|SET\|SKIP\|STARTSAS\|STOP\)\>" contains=sasStatementKwd
+syn match sasStatement "\(^\|;\)\s*\(TITLE\d\=\|UPDATE\|WAITFOR\|WHEN\|WHERE\|WINDOW\|X\)\>" contains=sasStatementKwd
+syn match sasStatement "\(^\|;\)\s*DECLARE\s\+\(HASH\|HITER\)\>" contains=sasStatementKwd
 
-" Keywords that are used in Proc SQL
-" I left them as statements because SAS's enhanced editor highlights
-" them the same as normal statements used in data steps (Jim Kidd)
+" Base SAS 9.4, procedures (Zhenhuan Hu)
+syn match sasStatement "\(^\|;\)\s*\(REPAIR\)\>" contains=sasStatementKwd " Proc AUTHLIB
+syn match sasStatement "\(^\|;\)\s*\(CALID\|DUR\|FIN\|HOLIDUR\|HOLIFIN\|HOLIVAR\|OUTDUR\|OUTFIN\|OUTSTART\|START\)\>" contains=sasStatementKwd " Proc CALENDAR
+syn match sasStatement "\(^\|;\)\s*\(CHANGE\|CONTENTS\|EXCHANGE\|SAVE\)\>" contains=sasStatementKwd " Proc CATALOG
+syn match sasStatement "\(^\|;\)\s*\(BLOCK\|HBAR\|PIE\|STAR\|VBAR\)\>" contains=sasStatementKwd " Proc CHART
+syn match sasStatement "\(^\|;\)\s*\(TRANTAB\)\>" contains=sasStatementKwd " Proc CPORT
+syn match sasStatement "\(^\|;\)\s*\(DBENCODING\|DELIMITER\|FMTLIB\|META\|PUTNAMES\)\>" contains=sasStatementKwd " Proc EXPORT
+syn match sasStatement "\(^\|;\)\s*\(DELETEFUNC\|DELETESUBR\|FUNCTION\|LISTFUNC\|LISTSUBR\|OUTARGS\|STRUCT\|SUBROUTINE\)\>" contains=sasStatementKwd " Proc FCMP
+syn match sasStatement "\(^\|;\)\s*\(FONTFILE\|FONTPATH\|TRUETYPE\|TYPE1\|OPENTYPE\)\>" contains=sasStatementKwd " Proc FONTREG
+syn match sasStatement "\(^\|;\)\s*\(EXCLUDE\|INVALUE\|PICTURE\|SELECT\|VALUE\)\>" contains=sasStatementKwd " Proc FORMAT
+syn match sasStatement "\(^\|;\)\s*\(CLASS\|FREQ\|OUTPUT\|TYPES\|WAYS\)\>" contains=sasStatementKwd " Proc MEANS
+syn match sasStatement "\(^\|;\)\s*\(BY\|ID\|PAGEBY\|SUM\|SUMBY\|VAR\)\>" contains=sasStatementKwd " Proc PRINT
+syn match sasStatement "\(^\|;\)\s*\(RANKS\)\>" contains=sasStatementKwd " Proc RANKS
+syn match sasStatement "\(^\|;\)\s*\(BREAK\|COLUMN\|DEFINE\|COMPUTE\|ENDCOMP\|RBREAK\)\>" contains=sasStatementKwd " Proc REPORT
+syn match sasStatement "\(^\|;\)\s*\(CLASSLEV\|KEYLABEL\)\>" contains=sasStatementKwd " Proc TABULATE
+syn match sasStatement "\(^\|;\)\s*\(COPY\|IDLABEL\)\>" contains=sasStatementKwd " Proc TRANSPOSE
+" Base SAS 9.4, statistical procedures
+syn match sasStatement "\(^\|;\)\s*\(PARTIAL\|WEIGHT\|WITH\)\>" contains=sasStatementKwd " Proc CORR
+syn match sasStatement "\(^\|;\)\s*\(EXACT\|TABLES\=\|TEST\)\>" contains=sasStatementKwd " Proc FREQ
+syn match sasStatement "\(^\|;\)\s*\(CDFPLOT\|HISTOGRAM\|INSET\|PPPLOT\|PROBPLOT\|QQPLOT\)\>" contains=sasStatementKwd " Proc UNIVARIATE
+" SAS/ODS, 9.4
+syn match sasStatement "\(^\|;\)\s*\(BAND\|BUBBLE\|DENSITY\|DOT\|ELLIPSE\|HBARPARM\|HBOX\|HIGHLOW\|HLINE\)\>" contains=sasStatementKwd " Proc SGPLOT
+syn match sasStatement "\(^\|;\)\s*\(PANELBY\|COLAXIS\|ROWAXIS\)\>" contains=sasStatementKwd " Proc SGPANEL
+syn match sasStatement "\(^\|;\)\s*\(COMPARE\|MATRIX\|PLOT\)\>" contains=sasStatementKwd " Proc SGSCATTER
+syn match sasStatement "\(^\|;\)\s*\(DYNAMIC\)\>" contains=sasStatementKwd " Proc SGDESIGN, SGRENDER
+syn match sasStatement "\(^\|;\)\s*\(INSET\|KEYLEGEND\|LINEPARM\|LOESS\|NEEDLE\|PBSPLINE\|REFLINE\|REG\|SCATTER\)\>" contains=sasStatementKwd 
+syn match sasStatement "\(^\|;\)\s*\(SERIES\|STEP\|VBARPARM\|VBOX\|VECTOR\|VLINE\|WATERFALL\|XAXIS\|X2AXIS\|YAXIS\|Y2AXIS\)\>" contains=sasStatementKwd 
 
-syn keyword sasStatement	ADD AND ALTER AS CASCADE CHECK CREATE
-syn keyword sasStatement	DELETE DESCRIBE DISTINCT DROP FOREIGN
-syn keyword sasStatement	FROM GROUP HAVING INDEX INSERT INTO IN
-syn keyword sasStatement	KEY LIKE MESSAGE MODIFY MSGTYPE NOT
-syn keyword sasStatement	NULL ON OR ORDER PRIMARY REFERENCES
-syn keyword sasStatement	RESET RESTRICT SELECT SET TABLE
-syn keyword sasStatement	UNIQUE UPDATE VALIDATE VIEW WHERE
+" SAS/GRAPH, version 9.3 (Zhenhuan Hu)
+syn match sasStatement "\(^\|;\)\s*\(AXIS\d\{0,2}\|GOPTIONS\|LEGEND\d\{0,2}\|NOTE\|PATTERN\d\{0,3}\|SYMBOL\d\{0,3}\)\>" contains=sasStatementKwd 
+syn match sasStatement "\(^\|;\)\s*\(HBAR3D\|PIE3D\|VBAR3D\)\>" contains=sasStatementKwd " Proc GCHART
+syn match sasStatement "\(^\|;\)\s*\(BUBBLE2\|PLOT2\=\)\>" contains=sasStatementKwd " Proc GPLOT
+
+" SAS/STAT statments, version 9.3 (Zhenhuan Hu)
+syn match sasStatement "\(^\|;\)\s*\(BASELINE\|MODEL\)\>" contains=sasStatementKwd " Proc PHREG
+
+" Proc SQL keywords (Zhenhuan Hu)
+syn keyword sasProcSQLKwd ADD AND ALTER AS BY CASCADE CHECK CREATE contained
+syn keyword sasProcSQLKwd DELETE DESCRIBE DISTINCT DROP FOREIGN contained
+syn keyword sasProcSQLKwd FROM FULL GROUP HAVING INDEX INSERT INTO IN INNER contained
+syn keyword sasProcSQLKwd JOIN KEY LEFT LIKE MESSAGE MODIFY MSGTYPE NOT contained
+syn keyword sasProcSQLKwd ON ORDER OUTER QUIT RESET RESTRICT RIGHT SELECT SET contained
+syn keyword sasProcSQLKwd TABLE TABLES UNIQUE UPDATE VALIDATE VIEW WHERE contained
+
+" ODS keywords (Zhenhuan Hu)
+syn keyword sasODSKwd ODS CLOSE CHTML CSVALL contained
+syn keyword sasODSKwd DOCBOOK DOCUMENT ESCAPECHAR EXCLUDE contained
+syn keyword sasODSKwd GRAPHICS HTML HTMLCSS HTML3 IMODE LISTING contained
+syn keyword sasODSKwd MAKEUP OFF ON OUTPUT PACKAGES PATH PCL PDF PHTML contained
+syn keyword sasODSKwd PRINTER PROCLABEL PROCTITLE PS RESULTWS RTF contained
+syn keyword sasODSKwd SELECT SHOW TAGSET TEXT TRACE USEGOPT VERIFY WML contained
+syn match sasStatement "\(^\|;\)\s*\(STYLE\)\>" contains=sasStatementKwd " Proc TEMPLATE
+
+syn region sasODS start="\(^\|;\)\s*\ODS\>" end=";"me=e-1 contains=sasODSKwd, sasString, sasNumber, sasComment, sasMacro, sasMacroFunction, sasMacroVar
+
+" SAS formats
+syn match sasFormatValue "\w\+\." contained
+syn region sasFormat start="\(^\|;\)\s*\(FORMAT\|INPUT\)\>" end=";"me=e-1 contains=sasFormatValue, sasStatement, sasString, sasNumber, sasStep, sasComment, sasMacro, sasMacroFunction, sasMacroVar
+
+" No need to specify PROC list if use this line (Bob Heckel).
+" Match options contained in the PROC statement (Zhenhuan Hu);
+syn match sasProcName "\<PROC\( \w\+\>\|\>\)" contained
+syn region sasProc start="^\s*PROC" end=";"me=e-1 contains=sasProcName, sasStep, sasString, sasNumber, sasComment, sasMacro, sasMacroFunction, sasMacroVar
+syn region sasProcSQL start="^\s*PROC SQL\>" end="\(^\|;\)\s*quit\s*;"me=e-1 contains=sasProcName, sasStep, sasString, sasNumber, sasComment, sasMacro, sasMacroFunction, sasMacroVar, sasProcSQLKwd keepend
+
+" Thanks to Ronald Höllwarth for this fix to an intra-versioning
+" problem with this little feature
+" Used a more efficient way to match macro vars (Zhenhuan Hu)
+if version < 600
+  syn match sasMacroVar "\&\+\w\+"
+else
+  syn match sasMacroVar "&\+\w\+"
+endif
 
 " Match declarations have to appear one per line (Paulo Tanimoto)
-syn match sasStatement	"FOOTNOTE\d"
-syn match sasStatement	"TITLE\d"
+" No need for declaring each macro function, only macro statements are included (Zhenhuan Hu)
+syn match sasMacro "%\(ABORT\|MACRO\|COPY\|DISPLAY\|DO\|TO\|BY\|UNTIL\|WHILE\|END\)\>"
+syn match sasMacro "%\(GLOBAL\|GOTO\|IF\|ELSE\|THEN\|INPUT\|LABEL\|LET\|LOCAL\|MEND\)\>"
+syn match sasMacro "%\(PUT\|RETURN\|SYMDEL\|SYSCALL\|SYSEXEC\|SYSLPUT\|SYSRPUT\|WINDOW\|INCLUDE\)\>"
 
-" Match declarations have to appear one per line (Paulo Tanimoto)
-syn match sasMacro "%BQUOTE"
-syn match sasMacro "%NRBQUOTE"
-syn match sasMacro "%CMPRES"
-syn match sasMacro "%QCMPRES"
-syn match sasMacro "%COMPSTOR"
-syn match sasMacro "%DATATYP"
-syn match sasMacro "%DISPLAY"
-syn match sasMacro "%DO"
-syn match sasMacro "%ELSE"
-syn match sasMacro "%END"
-syn match sasMacro "%EVAL"
-syn match sasMacro "%GLOBAL"
-syn match sasMacro "%GOTO"
-syn match sasMacro "%IF"
-syn match sasMacro "%INDEX"
-syn match sasMacro "%INPUT"
-syn match sasMacro "%KEYDEF"
-syn match sasMacro "%LABEL"
-syn match sasMacro "%LEFT"
-syn match sasMacro "%LENGTH"
-syn match sasMacro "%LET"
-syn match sasMacro "%LOCAL"
-syn match sasMacro "%LOWCASE"
-syn match sasMacro "%MACRO"
-syn match sasMacro "%MEND"
-syn match sasMacro "%NRBQUOTE"
-syn match sasMacro "%NRQUOTE"
-syn match sasMacro "%NRSTR"
-syn match sasMacro "%PUT"
-syn match sasMacro "%QCMPRES"
-syn match sasMacro "%QLEFT"
-syn match sasMacro "%QLOWCASE"
-syn match sasMacro "%QSCAN"
-syn match sasMacro "%QSUBSTR"
-syn match sasMacro "%QSYSFUNC"
-syn match sasMacro "%QTRIM"
-syn match sasMacro "%QUOTE"
-syn match sasMacro "%QUPCASE"
-syn match sasMacro "%SCAN"
-syn match sasMacro "%STR"
-syn match sasMacro "%SUBSTR"
-syn match sasMacro "%SUPERQ"
-syn match sasMacro "%SYSCALL"
-syn match sasMacro "%SYSEVALF"
-syn match sasMacro "%SYSEXEC"
-syn match sasMacro "%SYSFUNC"
-syn match sasMacro "%SYSGET"
-syn match sasMacro "%SYSLPUT"
-syn match sasMacro "%SYSPROD"
-syn match sasMacro "%SYSRC"
-syn match sasMacro "%SYSRPUT"
-syn match sasMacro "%THEN"
-syn match sasMacro "%TO"
-syn match sasMacro "%TRIM"
-syn match sasMacro "%UNQUOTE"
-syn match sasMacro "%UNTIL"
-syn match sasMacro "%UPCASE"
-syn match sasMacro "%VERIFY"
-syn match sasMacro "%WHILE"
-syn match sasMacro "%WINDOW"
+" User defined macro functions (Zhenhuan Hu)
+syn match sasMacroFunction "%\w\+("he=e-1
 
-" SAS Functions
-
-syn keyword sasFunction	ABS ADDR AIRY ARCOS ARSIN ATAN ATTRC ATTRN
-syn keyword sasFunction	BAND BETAINV BLSHIFT BNOT BOR BRSHIFT BXOR
-syn keyword sasFunction	BYTE CDF CEIL CEXIST CINV CLOSE CNONCT COLLATE
-syn keyword sasFunction	COMPBL COMPOUND COMPRESS COS COSH CSS CUROBS
-syn keyword sasFunction	CV DACCDB DACCDBSL DACCSL DACCSYD DACCTAB
-syn keyword sasFunction	DAIRY DATE DATEJUL DATEPART DATETIME DAY
-syn keyword sasFunction	DCLOSE DEPDB DEPDBSL DEPDBSL DEPSL DEPSL
-syn keyword sasFunction	DEPSYD DEPSYD DEPTAB DEPTAB DEQUOTE DHMS
-syn keyword sasFunction	DIF DIGAMMA DIM DINFO DNUM DOPEN DOPTNAME
-syn keyword sasFunction	DOPTNUM DREAD DROPNOTE DSNAME ERF ERFC EXIST
-syn keyword sasFunction	EXP FAPPEND FCLOSE FCOL FDELETE FETCH FETCHOBS
-syn keyword sasFunction	FEXIST FGET FILEEXIST FILENAME FILEREF FINFO
-syn keyword sasFunction	FINV FIPNAME FIPNAMEL FIPSTATE FLOOR FNONCT
-syn keyword sasFunction	FNOTE FOPEN FOPTNAME FOPTNUM FPOINT FPOS
-syn keyword sasFunction	FPUT FREAD FREWIND FRLEN FSEP FUZZ FWRITE
-syn keyword sasFunction	GAMINV GAMMA GETOPTION GETVARC GETVARN HBOUND
-syn keyword sasFunction	HMS HOSTHELP HOUR IBESSEL INDEX INDEXC
-syn keyword sasFunction	INDEXW INPUT INPUTC INPUTN INT INTCK INTNX
-syn keyword sasFunction	INTRR IRR JBESSEL JULDATE KURTOSIS LAG LBOUND
-syn keyword sasFunction	LEFT LENGTH LGAMMA LIBNAME LIBREF LOG LOG10
-syn keyword sasFunction	LOG2 LOGPDF LOGPMF LOGSDF LOWCASE MAX MDY
-syn keyword sasFunction	MEAN MIN MINUTE MOD MONTH MOPEN MORT N
-syn keyword sasFunction	NETPV NMISS NORMAL NOTE NPV OPEN ORDINAL
-syn keyword sasFunction	PATHNAME PDF PEEK PEEKC PMF POINT POISSON POKE
-syn keyword sasFunction	PROBBETA PROBBNML PROBCHI PROBF PROBGAM
-syn keyword sasFunction	PROBHYPR PROBIT PROBNEGB PROBNORM PROBT PUT
-syn keyword sasFunction	PUTC PUTN QTR QUOTE RANBIN RANCAU RANEXP
-syn keyword sasFunction	RANGAM RANGE RANK RANNOR RANPOI RANTBL RANTRI
-syn keyword sasFunction	RANUNI REPEAT RESOLVE REVERSE REWIND RIGHT
-syn keyword sasFunction	ROUND SAVING SCAN SDF SECOND SIGN SIN SINH
-syn keyword sasFunction	SKEWNESS SOUNDEX SPEDIS SQRT STD STDERR STFIPS
-syn keyword sasFunction	STNAME STNAMEL SUBSTR SUM SYMGET SYSGET SYSMSG
-syn keyword sasFunction	SYSPROD SYSRC SYSTEM TAN TANH TIME TIMEPART
-syn keyword sasFunction	TINV TNONCT TODAY TRANSLATE TRANWRD TRIGAMMA
-syn keyword sasFunction	TRIM TRIMN TRUNC UNIFORM UPCASE USS VAR
-syn keyword sasFunction	VARFMT VARINFMT VARLABEL VARLEN VARNAME
-syn keyword sasFunction	VARNUM VARRAY VARRAYX VARTYPE VERIFY VFORMAT
-syn keyword sasFunction	VFORMATD VFORMATDX VFORMATN VFORMATNX VFORMATW
-syn keyword sasFunction	VFORMATWX VFORMATX VINARRAY VINARRAYX VINFORMAT
-syn keyword sasFunction	VINFORMATD VINFORMATDX VINFORMATN VINFORMATNX
-syn keyword sasFunction	VINFORMATW VINFORMATWX VINFORMATX VLABEL
-syn keyword sasFunction	VLABELX VLENGTH VLENGTHX VNAME VNAMEX VTYPE
-syn keyword sasFunction	VTYPEX WEEKDAY YEAR YYQ ZIPFIPS ZIPNAME ZIPNAMEL
-syn keyword sasFunction	ZIPSTATE
-
-" Handy settings for using vim with log files
-syn keyword sasLogMsg	NOTE
-syn keyword sasWarnMsg	WARNING
-syn keyword sasErrMsg	ERROR
+" SAS functions and call routines (Zhenhuan Hu)
+syn match sasFunction "\<\(CALL\s\+\|\w\+\.\|\)\w\+("he=e-1
 
 " Always contained in a comment (Bob Heckel)
-syn keyword sasTodo	TODO TBD FIXME contained
+syn keyword sasTodo TODO TBD FIXME contained
 
 " These don't fit anywhere else (Bob Heckel).
-" Added others that were missing.
-syn keyword sasUnderscore	_ALL_ _AUTOMATIC_ _CHARACTER_ _INFILE_ _N_ _NAME_ _NULL_ _NUMERIC_ _USER_ _WEBOUT_
+" Added others that were missing (Zhenhuan Hu).
+syn match sasInternalVariable "\<\(_ALL_\|_AUTOMATIC_\|_CHARACTER_\|_INFILE_\|_N_\|_NAME_\|_NULL_\|_NUMERIC_\|_USER_\|_WEBOUT_\)\>"
 
-" End of SAS Functions
-
-"  Define the default highlighting.
-"  For version 5.7 and earlier: only when not done already
-"  For version 5.8 and later: only when an item doesn't have highlighting yet
+" Define the default highlighting.
+" For version 5.7 and earlier: only when not done already
+" For version 5.8 and later: only when an item doesn't have highlighting yet
 
 if version >= 508 || !exists("did_sas_syntax_inits")
-   if version < 508
-      let did_sas_syntax_inits = 1
-      command -nargs=+ HiLink hi link <args>
-   else
-      command -nargs=+ HiLink hi def link <args>
-   endif
+  if version < 508
+    let did_sas_syntax_inits = 1
+    command -nargs=+ HiLink hi link <args>
+  else
+    command -nargs=+ HiLink hi def link <args>
+  endif
 
-   " Default sas enhanced editor color syntax
-	hi sComment	term=bold cterm=NONE ctermfg=Green ctermbg=Black gui=NONE guifg=DarkGreen guibg=White
-	hi sCard	term=bold cterm=NONE ctermfg=Black ctermbg=Yellow gui=NONE guifg=Black guibg=LightYellow
-	hi sDate_Time	term=NONE cterm=bold ctermfg=Green ctermbg=Black gui=bold guifg=SeaGreen guibg=White
-	hi sKeyword	term=NONE cterm=NONE ctermfg=Blue  ctermbg=Black gui=NONE guifg=Blue guibg=White
-	hi sFmtInfmt	term=NONE cterm=NONE ctermfg=LightGreen ctermbg=Black gui=NONE guifg=SeaGreen guibg=White
-	hi sString	term=NONE cterm=NONE ctermfg=Magenta ctermbg=Black gui=NONE guifg=Purple guibg=White
-	hi sText	term=NONE cterm=NONE ctermfg=White ctermbg=Black gui=bold guifg=Black guibg=White
-	hi sNumber	term=NONE cterm=bold ctermfg=Green ctermbg=Black gui=bold guifg=SeaGreen guibg=White
-	hi sProc	term=NONE cterm=bold ctermfg=Blue ctermbg=Black gui=bold guifg=Navy guibg=White
-	hi sSection	term=NONE cterm=bold ctermfg=Blue ctermbg=Black gui=bold guifg=Navy guibg=White
-	hi mDefine	term=NONE cterm=bold ctermfg=White ctermbg=Black gui=bold guifg=Black guibg=White
-	hi mKeyword	term=NONE cterm=NONE ctermfg=Blue ctermbg=Black gui=NONE guifg=Blue guibg=White
-	hi mReference	term=NONE cterm=bold ctermfg=White ctermbg=Black gui=bold guifg=Blue guibg=White
-	hi mSection	term=NONE cterm=NONE ctermfg=Blue ctermbg=Black gui=bold guifg=Navy guibg=White
-	hi mText	term=NONE cterm=NONE ctermfg=White ctermbg=Black gui=bold guifg=Black guibg=White
+  " hi Procedure term=bold ctermfg=Green gui=bold guifg=Orange
+  " hi Section gui=none guifg=grey20 guibg=White
 
-" Colors that closely match SAS log colors for default color scheme
-	hi lError	term=NONE cterm=NONE ctermfg=Red ctermbg=Black gui=none guifg=Red guibg=White
-	hi lWarning	term=NONE cterm=NONE ctermfg=Green ctermbg=Black gui=none guifg=Green guibg=White
-	hi lNote	term=NONE cterm=NONE ctermfg=Cyan ctermbg=Black gui=none guifg=Blue guibg=White
-
-
-   " Special hilighting for the SAS proc section
-
-	HiLink	sasComment	sComment
-	HiLink	sasConditional	sKeyword
-	HiLink	sasStep		sSection
-	HiLink	sasFunction	sKeyword
-	HiLink	sasMacro	mKeyword
-	HiLink	sasMacroVar	NonText
-	HiLink	sasNumber	sNumber
-	HiLink	sasStatement	sKeyword
-	HiLink	sasString	sString
-	HiLink	sasProc		sProc
-   " (Bob Heckel)
-	HiLink	sasTodo		Todo
-	HiLink	sasErrMsg	lError
-	HiLink	sasWarnMsg	lWarning
-	HiLink	sasLogMsg	lNote
-	HiLink	sasCards	sCard
-  " (Bob Heckel)
-	HiLink	sasUnderscore	PreProc
-	delcommand HiLink
+  HiLink sasComment Comment
+  HiLink sasCondition Statement
+  HiLink sasOperator Statement 
+  HiLink sasStep Statement
+  HiLink sasStatementKwd Statement
+  HiLink sasProcSQLKwd Statement
+  HiLink sasODSKwd Statement
+  HiLink sasFunction Function
+  HiLink sasMacro Macro
+  HiLink sasMacroFunction Macro
+  HiLink sasMacroVar Macro
+  HiLink sasNumber Number
+  HiLink sasFormatValue Tag
+  HiLink sasString String
+  HiLink sasProcName Keyword 
+  HiLink sasSection Underlined
+  HiLink sasTodo Todo
+  HiLink sasCards Special
+  HiLink sasInternalVariable Define
+  
+  delcommand HiLink
 endif
 
 " Syncronize from beginning to keep large blocks from losing
